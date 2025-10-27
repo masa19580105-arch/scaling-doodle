@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>タイピングマイワールド</title>
+  <style>
+    body { text-align:center; font-family:Arial; background:#f0f0f0; margin:0; padding:0; }
+    h1 { margin-top:50px; color:#333; }
+    #game { margin-top:30px; }
+  </style>
+</head>
+<body>
+  <h1>タイピングマイワールド</h1>
+  <div id="game">
+    <p>ここにゲームが表示されます</p>
+    <input type="text" id="inputBox" placeholder="ここにタイピング">
+    <p id="status"></p>
+  </div>
+
+  <script>
+    const words = ["hello","world","firebase","game","typing"];
+    let index = 0;
+    const inputBox = document.getElementById("inputBox");
+    const status = document.getElementById("status");
+
+    inputBox.addEventListener("keydown", function(e){
+      if(e.key === "Enter"){
+        if(inputBox.value === words[index]){
+          status.textContent = "正解！";
+          index++;
+          if(index >= words.length) status.textContent = "ゲームクリア！";
+        } else {
+          status.textContent = "間違い！もう一度";
+        }
+        inputBox.value = "";
+      }
+    });
+  </script>
+</body>
+</html>
